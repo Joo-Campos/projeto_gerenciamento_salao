@@ -5,6 +5,7 @@ import time as time
 import datetime as dt
 import aplicativo.Pages.Clientes.Excluir_Clientes as deletar_clientes
 import aplicativo.Pages.Clientes.Editar_Clientes as atualizar_clientes
+import openpyxl
 
 def visualizar_clientes():
             

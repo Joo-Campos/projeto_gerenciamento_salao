@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import time as time
 import datetime as dt
+import openpyxl 
 
 def excluir_cliente(id_cliente):
         excel_path = r"C:\Users\joaoc\OneDrive\Documentos\GitHub\projeto_gerenciamento_salao\bases_salao\clientes_cadastrados.xlsx"

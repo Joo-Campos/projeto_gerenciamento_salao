@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import time as time
 import datetime as dt
+import openpyxl
 
 # cache_data - obtem as informações dos arquivo e salva internamente, para que não haja necessidade de baixas as informações novamente;
 # Só baixará novamente, quando uma informação for acrescentada
