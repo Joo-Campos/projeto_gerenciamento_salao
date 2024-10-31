@@ -3,8 +3,8 @@ import pandas as pd
 import numpy as np
 import time as time
 import datetime as dt
-import Pages.Clientes.Excluir_Clientes as deletar_clientes
-import Pages.Clientes.Editar_Clientes as atualizar_clientes
+import aplicativo.Pages.Clientes.Excluir_Clientes as deletar_clientes
+import aplicativo.Pages.Clientes.Editar_Clientes as atualizar_clientes
 
 def visualizar_clientes():
             
