@@ -1,2 +1,2 @@
-# projeto_gerenciamento_salao
+# Projeto - Aplicativo de gerenciamento de salão de beleza 👩‍🦰
  
