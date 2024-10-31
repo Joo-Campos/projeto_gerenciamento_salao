@@ -1,3 +1,4 @@
+
 import streamlit as st
 import pandas as pd
 import time as time
@@ -49,3 +50,4 @@ elif escolha_pagina == "Tela Inicial 🏠":
 
 elif escolha_pagina == "Movimentações 💵":
        transacoes.movimentacoes()
+
