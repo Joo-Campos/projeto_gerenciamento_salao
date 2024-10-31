@@ -2,11 +2,11 @@ import streamlit as st
 import pandas as pd
 import time as time
 import datetime as dt
-import Pages.Clientes.Cadastro_Clientes as cadastro_clientes
-import Pages.Clientes.Clientes_Cadastrados as cadastrados_clientes
-import Pages.Atendimentos.Atendimentos_Realizados as atendimentos
-import Pages.Tela_Inicial.tela_inicial as tela_inicial
-import Pages.Movimentos.Transacoes_Financeiras as transacoes
+import aplicativo.Pages.Clientes.Cadastro_Clientes as cadastro_clientes
+import aplicativo.Pages.Clientes.Clientes_Cadastrados as cadastrados_clientes
+import aplicativo.Pages.Atendimentos.Atendimentos_Realizados as atendimentos
+import aplicativo.Pages.Tela_Inicial.tela_inicial as tela_inicial
+import aplicativo.Pages.Movimentos.Transacoes_Financeiras as transacoes
 
 
 hoje = dt.datetime.today()
