@@ -10,7 +10,7 @@ def visualizar_clientes():
             
             st.title("Studio - Ana Ferrreira")
             st.subheader("Clientes cadastrados")
-            df_clientes = pd.read_excel(r"C:\Users\joaoc\OneDrive\projetos do salão\bases_salao\clientes_cadastrados.xlsx",sheet_name="clientes_cadastrados",engine="openpyxl")
+            df_clientes = pd.read_excel(r"C:\Users\joaoc\OneDrive\Documentos\GitHub\projeto_gerenciamento_salao\bases_salao\clientes_cadastrados.xlsx",sheet_name="clientes_cadastrados",engine="openpyxl")
             criar_colunas= st.columns((2,4,3,3,3,3))
             lista_colunas = ["ID","Nome","Data de nascimento","Cadastrado em","",""] #array
             for colunas,cabeçalhos in zip(criar_colunas,lista_colunas): #zip está conectanto a criação das colunas com os nomes das colunas

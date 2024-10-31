@@ -7,4 +7,4 @@ def tela_inicial():
     container = st.container(border=True)       
     
     container.title("           Sistema de Gerenciamento")
-    container.image("images/logo.jpg",use_column_width="always")
+    container.image("aplicativo/images/logo.jpg",use_column_width="always")

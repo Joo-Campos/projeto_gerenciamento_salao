@@ -2,9 +2,9 @@ import streamlit as st
 import pandas as pd
 
 def atedimentos_realizados():
-    atendimentos = r"C:\Users\joaoc\OneDrive\projetos do salão\bases_salao\atendimentos_realizados.xlsx"
+    atendimentos = r"C:\Users\joaoc\OneDrive\Documentos\GitHub\projeto_gerenciamento_salao\bases_salao\atendimentos_realizados.xlsx"
     df_atendimentos = pd.read_excel(atendimentos,sheet_name="atendimentos_realizados",engine="openpyxl")
-    clientes = r"C:\Users\joaoc\OneDrive\projetos do salão\bases_salao\clientes_cadastrados.xlsx"
+    clientes = r"C:\Users\joaoc\OneDrive\Documentos\GitHub\projeto_gerenciamento_salao\bases_salao\clientes_cadastrados.xlsx"
     df_clientes = pd.read_excel(clientes,sheet_name="clientes_cadastrados",engine="openpyxl")
     clientes_cadastrados = df_clientes["nome_cliente"].unique()
     st.title("Atendimentos realizados")
