@@ -1,0 +1,107 @@
+df_clientes = pd.read_excel(r"C:\Users\joaoc\OneDrive\projetos do salão\bd_salao.xlsx",sheet_name="clientes_cadastrados",engine="openpyxl")
+      nova_tabela = {
+                  "ID" : df_clientes["id_cliente"],
+                  "Nome" : df_clientes["nome_cliente"],
+                  "Data de nascimento" : df_clientes["data_nascimento"],
+                  "Cadastrado em" : df_clientes["ativo_em"]
+      }
+
+
+      teste = pd.DataFrame(nova_tabela)
+
+      st.subheader("Clientes cadastrados")
+
+      st.dataframe(teste, use_container_width= True)
+
+
+import streamlit as st
+import pandas as pd
+import numpy as np
+import time as time
+import datetime as dt
+import __main as home
+
+excel_path = r"C:\Users\joaoc\OneDrive\projetos do salão\bd_salao.xlsx"
+df_clientes = pd.read_excel(excel_path,sheet_name="clientes_cadastrados",engine="openpyxl")
+
+def excluir_cliente(id_cliente):
+        df_clientes = st.session_state.df_clientes
+        localizar = df_clientes.index[df_clientes["id_cliente"] == id_cliente]
+
+        if not localizar.empty:
+      
+             df_clientes  =   df_clientes.drop(axis= 0, index= localizar)
+             df_clientes.to_excel(excel_path,sheet_name="clientes_cadastrados",index= False,index_label=False)
+             st.session_state.df_clientes = df_clientes
+
+
+
+def visualizar_clientes():
+            if df_clientes not in st.session_state:
+                  st.session_state.df_clientes = pd.read_excel(excel_path,sheet_name="clientes_cadastrados",engine="openpyxl")
+            df_clientes = st.session_state.df_clientes
+            
+            
+            criar_colunas= st.columns((2,2,2,2,2,2))
+            lista_colunas = ["ID","Nome","Data de nascimento","Cadastrado em","",""] #array
+            for colunas,cabeçalhos in zip(criar_colunas,lista_colunas): #zip está conectanto a criação das colunas com os nomes das colunas
+                        colunas.write(cabeçalhos)
+            
+            for index, row in df_clientes.iterrows():
+                  col1,col2,col3,col4,col5,col6 = st.columns((2,2,2,2,2,2))
+                  col1.write(row["id_cliente"])
+                  col2.write(row["nome_cliente"])
+                  col3.write(row["data_nascimento"])
+                  col4.write(row["ativo_em"])
+                  espaco_btexcluir = col5.empty() # criando uma coluna vazia
+                  on_click_excluir = espaco_btexcluir.button("Excuir",key="bt_excluir" + str(row["id_cliente"]), icon="🗑️",help=str(row["id_cliente"]))# na chave key foi se criada uma chave para cada botão.
+                  espaco_btalterar = col6.empty() # criando uma coluna vazia
+                  on_click_editar = espaco_btalterar.button("Editar",key="bt_editar" + str(row["id_cliente"]), icon="📝")# na chave key foi se criada uma chave para cada botão.
+                  if on_click_excluir:
+                        excluir_cliente(row["id_cliente"])
+                        st.rerun
+visualizar_clientes()
+
+
+
+import streamlit as st
+import pandas as pd
+import numpy as np
+import time as time
+import datetime as dt
+import __main as home
+
+excel_path = r"C:\Users\joaoc\OneDrive\projetos do salão\bd_salao.xlsx"
+df_clientes = pd.read_excel(excel_path,sheet_name="clientes_cadastrados",engine="openpyxl")
+
+
+
+def excluir_cliente(id_cliente):
+        localizar = df_clientes.index[df_clientes["id_cliente"] == id_cliente ]
+        remover  =   df_clientes.drop(axis= 0, index= localizar)
+        remover.to_excel(r"C:\Users\joaoc\OneDrive\projetos do salão\bd_salao.xlsx",sheet_name="clientes_cadastrados",index= False,index_label=False)
+
+
+
+
+def visualizar_clientes():
+            df_clientes = pd.read_excel(excel_path,sheet_name="clientes_cadastrados",engine="openpyxl")
+            criar_colunas= st.columns((2,2,2,2,2,2))
+            lista_colunas = ["ID","Nome","Data de nascimento","Cadastrado em","",""] #array
+            for colunas,cabeçalhos in zip(criar_colunas,lista_colunas): #zip está conectanto a criação das colunas com os nomes das colunas
+                        colunas.write(cabeçalhos)
+            
+            for index, row in df_clientes.iterrows():
+                  col1,col2,col3,col4,col5,col6 = st.columns((2,2,2,2,2,2))
+                  col1.write(row["id_cliente"])
+                  col2.write(row["nome_cliente"])
+                  col3.write(row["data_nascimento"])
+                  col4.write(row["ativo_em"])
+                  espaco_btexcluir = col5.empty() # criando uma coluna vazia
+                  on_click_excluir = espaco_btexcluir.button("Excuir",key="bt_excluir" + str(row["id_cliente"]), icon="🗑️")# na chave key foi se criada uma chave para cada botão.
+                  espaco_btalterar = col6.empty() # criando uma coluna vazia
+                  on_click_editar = espaco_btalterar.button("Editar",key=f'bt_editar_{row["id_cliente"]}', icon="📝")# na chave key foi se criada uma chave para cada botão.
+                  if on_click_excluir:
+                        excluir_cliente(int(row["id_cliente"]))
+                        st.rerun() 
+visualizar_clientes()

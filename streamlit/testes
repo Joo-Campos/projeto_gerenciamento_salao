@@ -1,0 +1,40 @@
+import pandas as pd # type: ignore
+import datetime as dt
+import streamlit as st
+# lista que será a base de dados para armazenar os clientes cadastrados
+base_clientes = []
+
+# base que será a banco de dados onde as informações serão salvas
+df_clientes = pd.read_excel(r"C:\Users\joaoc\OneDrive\projetos do salão\bd_salao.xlsx",sheet_name="clientes_cadastrados",engine="openpyxl")
+
+class Atualizar_Cadastro():
+    def data_nascimento():
+        #var_nascimento = input("Insira a data de nascimento: ")  
+        data_nascimento = df_clientes[df_clientes["id_cliente"]==6]["data_nascimento"]
+        print(data_nascimento)
+    def nome_cliente():
+        var_nome = input("Insira o nome do cliente: ")
+        df_clientes.loc[df_clientes["nome_cliente"] == "Joao Campos","nome_cliente"] = var_nome
+        print(df_clientes)
+    def remover_cliente():
+        localizar_indice = df_clientes.index[df_clientes["id_cliente"] == str(6)]
+        df_clientes.drop( index= localizar_indice)
+        print(df_clientes)
+    def visualizar():
+         atendimentos = r"C:\Users\joaoc\OneDrive\projetos do salão\bases_salao\atendimentos_realizados.xlsx"
+         df_atendimentos = pd.read_excel(atendimentos,sheet_name="atendimentos_realizados",engine="openpyxl")
+         
+         id = df_atendimentos["id_atendimento"].empty
+
+         if id == True:
+            id = 1
+            print(id)
+         else:
+            id = df_atendimentos["id_atendimento"].max() + 1
+            print(id)
+# base que será a banco de dados onde as informações serão salvas
+df_clientes = pd.read_excel(r"C:\Users\joaoc\OneDrive\projetos do salão\bd_salao.xlsx",sheet_name="clientes_cadastrados",engine="openpyxl")
+
+
+
+Atualizar_Cadastro.visualizar()
